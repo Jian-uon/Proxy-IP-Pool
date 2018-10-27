@@ -1,0 +1,14 @@
+{
+	"jproxy_websites" : [
+		{
+		"jwebsite" : "https://www.kuaidaili.com/free/inha/",
+		"jxpath_ip" : "",
+		"jxpath_port" : "",
+		},
+		{
+		"jwebsite" : "http://www.xicidaili.com/nn/",
+		"jxpath_ip" : "",
+		"jxpath_port" : "",
+		},
+	]
+}
