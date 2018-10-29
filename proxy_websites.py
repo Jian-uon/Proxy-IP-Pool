@@ -5,9 +5,10 @@ import os
 
 class ProxyIp:
 
-    def __init__(self):
-        self.ip = ''
-        self.port = 0
+    def __init__(self, ip='', port=0):
+        if ip != '' and port != 0:
+            self.ip = ip
+            self.port = port
         #服务器地址
         #速度
         #存活时间
@@ -19,13 +20,16 @@ class ProxyIp:
              jIp = json.load(f)
         return jIp
 
+    def __str__(self):
+         return '{"ip":"%s", "port":%d}'%(self.ip, self.port)
 
 class ProxyWebsite:
 
     def __init__(self):
         self.url = ''
-        self.xpath_pattern = ''
-        self.IP_list = [] #ProxyIp
+        self.ipXpathPattern = ''
+        self.portXpathPattern = ''
+        self.IpList = [] #ProxyIp
 
     #Return a dictionary of all proxy websites.
     @staticmethod
@@ -45,25 +49,29 @@ class ProxyWebsite:
             return
         return jWebsite
 
-    #Save current IP_list
-    def save_ip(self, filename):
+    #Save current IpList
+    def save_Ip(self, filename):
         try:
-            if self.IP_list == False:
+            if self.IpList == False:
                 print("IP list is empty.")
                 return
             with open(filename, 'w+') as f:
-                json.dump(self.IP_list, f)
+                json.dump(self.IpList, f)
                 print('IP list saved successfully.')
         except():
             print('Saving IP list error.')
             return
-
+    
+    def add_Ip(self, item):
+        self.IpList.extend(item)  
 
 
 def main():
-    #p = ProxyIp()
-    #res = p.loadIp("ip_address.json")
+    p = ProxyIp('127.0.0.1', 8088)
+    #res = p.load_IP("ip_address.json")
     #print(res)
+    print(p.__str__())
+    #ans:{'proxys': [{'ip': '61.183.176.122', 'port': 53281}, {'ip': '202.108.251.230', 'port': 57491}]}
     sample = { 
         'config':'test',
         'details':[
