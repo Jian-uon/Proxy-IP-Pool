@@ -1,5 +1,5 @@
 # Proxy-IP-Pool
-参考https://github.com/zhaozhengcoder/IP_POOL
+参考https://github.com/zhaozhengcoder/IP_POOL思路，开始造轮子。。
 
 requests爬取代理网站的IP并以json形式保存到本地。
 
